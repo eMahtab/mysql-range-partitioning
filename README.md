@@ -1,1 +1,1 @@
-# mysql-range-partitioning
+# MySql Range Partitioning
