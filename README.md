@@ -2,7 +2,7 @@
 
 ## Step 1 : Run the MySQL using docker compose
 
-```dockerfile
+```yml
 ---
 version: "2"
 services:
@@ -29,7 +29,13 @@ volumes:
   mysql-instance-1-volume:
 ```
 
-## Dataset : users-and-messages
+```docker
+docker compose up
+```
+!["Run MySQL instance as a docker container"](docker-compose-up.png?raw=true)
+
+## Dataset generation : Create users and messages table and insert data
+
 The `test` database contains two tables `users` and `messages`. Records were inserted in batches by a Java program.
 
 ### Dataset Size :
