@@ -74,3 +74,5 @@ CREATE TABLE messages (
 !["Space used by tables"](docker-volume.png?raw=true)
 
 !["users and messages tables and binary log files size"](database-tables-and-binary-log-files.png?raw=true)
+
+!["messages by date"](messages-by-date.png?raw=true)
