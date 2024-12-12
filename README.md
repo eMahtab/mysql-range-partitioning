@@ -71,3 +71,4 @@ CREATE TABLE messages (
     FOREIGN KEY (recipient_id) REFERENCES users(id)
 );
 ```
+!["Space used by tables"](docker-volume.png?raw=true)
