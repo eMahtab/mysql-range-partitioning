@@ -101,6 +101,11 @@ ALTER TABLE messages DROP CONSTRAINT messages_ibfk_2;
 ### Making created_at column as part of Primary Key
 
 We drop the existing primary key, and create a new primary key by adding `created_at` to `id` column. 
+
+**Note : It took around half an hour to drop the previous index and create the new one.**
+
 ```sql
 ALTER TABLE messages DROP PRIMARY KEY, ADD PRIMARY KEY (id, created_at);
 ```
+!["adding created_at to primary key"](new-primary-key.png?raw=true)
+
