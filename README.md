@@ -76,3 +76,17 @@ CREATE TABLE messages (
 !["users and messages tables and binary log files size"](database-tables-and-binary-log-files.png?raw=true)
 
 !["messages by date"](messages-by-date.png?raw=true)
+
+## Indexes in users and messages tables:
+
+Below is the output from **`SHOW INDEX FROM users`** and **`SHOW INDEX FROM messages`**
+
+!["users and messages table indexes"](table-indexes.png?raw=true)
+
+As we can see from above screenshot, **`users` table have one index, which is Primary index on `id` column**
+
+And **`messages` table have one Primary index (on column `id`) and two Secondary indexes (one on column `sender_id` and other one on column `recipient_id`)**
+
+If you see the `CREATE TABLE` command above for `messages` table, we did not explicitly created secondary indexes, it was automatically created by MySQL for enforcing referential integrity **efficiently**. Operations like `ON DELETE CASCADE` or `ON UPDATE CASCADE` need to locate and modify rows in the referencing table quickly.
+
+You can always check the indexes in a table using `SHOW INDEX FROM` command, to get more details.
