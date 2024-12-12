@@ -36,7 +36,7 @@ docker compose up
 
 !["MySQL instance as a docker container"](docker-container.png?raw=true)
 
-## Dataset generation : Create users and messages table and insert data
+## Step 2 : Dataset generation : Create users and messages table and insert data
 
 The `test` database contains two tables `users` and `messages`. Records were inserted in batches by a Java program.
 
