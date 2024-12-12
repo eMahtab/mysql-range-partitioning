@@ -90,3 +90,17 @@ And **`messages` table have one Primary index (on column `id`) and two Secondary
 If you see the `CREATE TABLE` command above for `messages` table, we did not explicitly created secondary indexes, it was automatically created by MySQL for enforcing referential integrity **efficiently**. Operations like `ON DELETE CASCADE` or `ON UPDATE CASCADE` need to locate and modify rows in the referencing table quickly.
 
 You can always check the indexes in a table using `SHOW INDEX FROM` command, to get more details.
+
+# Step 3 : Preparing for Table partitioning
+### Dropping the Foreign key constraint
+```sql
+ALTER TABLE messages DROP CONSTRAINT messages_ibfk_1;
+ALTER TABLE messages DROP CONSTRAINT messages_ibfk_2;
+```
+
+### Making created_at column as part of Primary Key
+
+We drop the existing primary key, and create a new primary key by adding `created_at` to `id` column. 
+```sql
+ALTER TABLE messages DROP PRIMARY KEY, ADD PRIMARY KEY (id, created_at);
+```
