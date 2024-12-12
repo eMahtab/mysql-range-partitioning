@@ -1,5 +1,34 @@
 # MySQL Table Partitioning
 
+## Step 1 : Run the MySQL using docker compose
+
+```dockerfile
+---
+version: "2"
+services:
+  mysql_db:
+    image: mysql:8.0
+    container_name: mysql-instance-1
+    volumes:
+      - mysql-instance-1-volume:/tmp
+    command:
+      [
+        "mysqld",
+        "--datadir=/tmp/mysql/data",
+        "--log-bin=bin.log",
+        "--server-id=1"
+      ]
+    environment:
+      &mysql-default-environment
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: test
+    ports:
+      - "3308:3306"
+
+volumes:
+  mysql-instance-1-volume:
+```
+
 ## Dataset : users-and-messages
 The `test` database contains two tables `users` and `messages`. Records were inserted in batches by a Java program.
 
