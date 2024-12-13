@@ -1,10 +1,12 @@
 # MySQL Table Partitioning
 
-## Step 1 :
+## Database Setup : 
 
-## Step 2 : Dataset generation : Create users and messages table and insert data
+The `test` database contains two tables `users` and `messages`, the tables and records in the tables are created by importing the (https://github.com/eMahtab/mysql-test-dataset/blob/main/users-and-messages/test_database.zip) database dump.
 
-The `test` database contains two tables `users` and `messages`. Records were inserted in batches by a Java program.
+Its medium sized database having in total 110 Million records, so **importing the database dump will take a long time**.
+
+!["database dump import"](data-import-successful.png?raw=true)
 
 ### Dataset Size :
 
@@ -12,9 +14,14 @@ The `test` database contains two tables `users` and `messages`. Records were ins
 
 **messages table = 100 Million records**
 
+!["users and messages table in test database"](tables.png?raw=true)
 
 #### Schema  : 
 **The tables were originally created using below DDL statements :**
+
+`users` table have id (which denotes user id) as Primary Key, and `messages` table also have id (which denotes message id) as Primary Key. 
+
+`messages` table have columns `sender_id` and `recipient_id` which are Foreign Key, referencing `id` column of `users` table
 
 ```sql
 CREATE TABLE users (
@@ -37,11 +44,8 @@ CREATE TABLE messages (
     FOREIGN KEY (recipient_id) REFERENCES users(id)
 );
 ```
-!["Space used by tables"](docker-volume.png?raw=true)
 
-!["users and messages tables and binary log files size"](database-tables-and-binary-log-files.png?raw=true)
-
-!["messages by date"](messages-by-date.png?raw=true)
+!["users and messages table records"](table-records.png?raw=true)
 
 ## Indexes in users and messages tables:
 
