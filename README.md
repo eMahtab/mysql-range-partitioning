@@ -225,7 +225,10 @@ mysql> select count(*) from messages partition (pAfterDec08);
 
 # Trying different queries
 
-### A query which requires just accessing record on one single partition
+### A query which requires just accessing record on one single partition e.g. pDec06
+```sql
+select count(*) from messages where created_at BETWEEN '2024-12-06 00:00:00' AND '2024-12-06 23:59:59';
+```
 
 !["Query result from just one partition"](just-one-partition.png?raw=true)
 
