@@ -140,3 +140,85 @@ FROM information_schema.partitions
 WHERE TABLE_NAME = 'messages';
 ```
 !["All 10 partitions"](all-10-partitions.png?raw=true)
+
+```sql
+mysql> select count(*) from messages partition (pBeforeDec01);
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from messages partition (pDec01);
++----------+
+| count(*) |
++----------+
+|  7926924 |
++----------+
+1 row in set (1.73 sec)
+
+mysql> select count(*) from messages partition (pDec02);
++----------+
+| count(*) |
++----------+
+| 14290662 |
++----------+
+1 row in set (9.44 sec)
+
+mysql> select count(*) from messages partition (pDec03);
++----------+
+| count(*) |
++----------+
+| 14278081 |
++----------+
+1 row in set (13.47 sec)
+
+mysql> select count(*) from messages partition (pDec04);
++----------+
+| count(*) |
++----------+
+| 14284870 |
++----------+
+1 row in set (9.63 sec)
+
+mysql> select count(*) from messages partition (pDec05);
++----------+
+| count(*) |
++----------+
+| 14286101 |
++----------+
+1 row in set (9.45 sec)
+
+mysql> select count(*) from messages partition (pDec06);
++----------+
+| count(*) |
++----------+
+| 14287221 |
++----------+
+1 row in set (9.61 sec)
+
+mysql> select count(*) from messages partition (pDec07);
++----------+
+| count(*) |
++----------+
+| 14286457 |
++----------+
+1 row in set (9.63 sec)
+
+mysql> select count(*) from messages partition (pDec08);
++----------+
+| count(*) |
++----------+
+|  6359684 |
++----------+
+1 row in set (3.85 sec)
+
+mysql> select count(*) from messages partition (pAfterDec08);
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+```
