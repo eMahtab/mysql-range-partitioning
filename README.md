@@ -131,4 +131,4 @@ ALTER TABLE messages PARTITION BY RANGE (TO_DAYS(created_at)) (
 ```
 !["Partition the table using range partition"](alter-table-range-partition.png?raw=true)
 
-
+**Note : It took 7:10 hours (a long time) to partition the original messages table of table data size around 13.2 GB to partition in 10 different partitions.**
