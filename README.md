@@ -1,40 +1,6 @@
 # MySQL Table Partitioning
 
-## Step 1 : Run the MySQL using docker compose
-
-```yml
----
-version: "2"
-services:
-  mysql_db:
-    image: mysql:8.0
-    container_name: mysql-instance-1
-    volumes:
-      - mysql-instance-1-volume:/tmp
-    command:
-      [
-        "mysqld",
-        "--datadir=/tmp/mysql/data",
-        "--log-bin=bin.log",
-        "--server-id=1"
-      ]
-    environment:
-      &mysql-default-environment
-      MYSQL_ROOT_PASSWORD: toor
-      MYSQL_DATABASE: test
-    ports:
-      - "3308:3306"
-
-volumes:
-  mysql-instance-1-volume:
-```
-
-```docker
-docker compose up
-```
-!["Run MySQL instance as a docker container"](docker-compose-up.png?raw=true)
-
-!["MySQL instance as a docker container"](docker-container.png?raw=true)
+## Step 1 :
 
 ## Step 2 : Dataset generation : Create users and messages table and insert data
 
@@ -132,6 +98,8 @@ ALTER TABLE messages PARTITION BY RANGE (TO_DAYS(created_at)) (
 !["Partition the table using range partition"](alter-table-range-partition.png?raw=true)
 
 **Note : It took 7:10 hours (a long time) to partition the original messages table of table data size around 13.2 GB to partition in 10 different partitions.**
+
+!["Messages table partitioned"](messages-table-partitioned.png?raw=true)
 
 ```sql
 SELECT TABLE_SCHEMA, TABLE_NAME, PARTITION_NAME, 
