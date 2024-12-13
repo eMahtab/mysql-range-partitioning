@@ -1,6 +1,6 @@
 # MySQL Table Partitioning
 
-## Database Setup : 
+# Step 1 : Database Setup
 
 The `test` database contains two tables `users` and `messages`, the tables and records in the tables are created by importing the (https://github.com/eMahtab/mysql-test-dataset/blob/main/users-and-messages/test_database.zip) database dump.
 
@@ -61,7 +61,7 @@ If you see the `CREATE TABLE` command above for `messages` table, we did not exp
 
 You can always check the indexes in a table using `SHOW INDEX FROM` command, to get more details.
 
-# Step 3 : Preparing for Table partitioning
+# Step 2 : Preparing for Table partitioning
 ### Dropping the Foreign key constraint
 ```sql
 ALTER TABLE messages DROP CONSTRAINT messages_ibfk_1;
@@ -79,7 +79,7 @@ ALTER TABLE messages DROP PRIMARY KEY, ADD PRIMARY KEY (id, created_at);
 ```
 !["adding created_at to primary key"](new-primary-key.png?raw=true)
 
-# Step 4 : Partitioning the table
+# Step 3 : Partitioning the table
 
 We partition the messages table using range partition on created_at column based on date.
 
