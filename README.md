@@ -226,8 +226,9 @@ from messages
 !["Queries all partitions"](queries-all-partitions.png?raw=true)
 
 ### A query which requires, querying all partitions
-Even though below queries requires checking all the partitions, but since we have secondary index on `sender_id` column, the below query takes very less time to complete.
-But if didn't had index on `sender_id` it would have taken a very long time.
+Even though below query requires checking all the partitions, but since we have secondary index on `sender_id` column, the below query takes very less time to complete.
+But if we didn't had index on `sender_id` it would have taken a very long time.
+
 ```sql
 select count(*)
 from messages
