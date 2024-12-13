@@ -109,3 +109,24 @@ ALTER TABLE messages DROP PRIMARY KEY, ADD PRIMARY KEY (id, created_at);
 ```
 !["adding created_at to primary key"](new-primary-key.png?raw=true)
 
+# Step 4 : Partitioning the table
+
+We partition the messages table using range partition on created_at column based on date.
+
+**Below we create 10 partitions, e.g. all the messages which were sent between 2024-12-04 00:00:00 and 2024-12-04 23:59:59 would go inside partition `pDec04`**
+
+```sql
+ALTER TABLE messages PARTITION BY RANGE (TO_DAYS(created_at)) (
+   PARTITION pBeforeDec01 VALUES LESS THAN (TO_DAYS('2024-12-01')),
+   PARTITION pDec01 VALUES LESS THAN (TO_DAYS('2024-12-02')),
+   PARTITION pDec02 VALUES LESS THAN (TO_DAYS('2024-12-03')),
+   PARTITION pDec03 VALUES LESS THAN (TO_DAYS('2024-12-04')),
+   PARTITION pDec04 VALUES LESS THAN (TO_DAYS('2024-12-05')),
+   PARTITION pDec05 VALUES LESS THAN (TO_DAYS('2024-12-06')),
+   PARTITION pDec06 VALUES LESS THAN (TO_DAYS('2024-12-07')),
+   PARTITION pDec07 VALUES LESS THAN (TO_DAYS('2024-12-08')),
+   PARTITION pDec08 VALUES LESS THAN (TO_DAYS('2024-12-09')),
+   PARTITION pAfterDec08 VALUES LESS THAN (MAXVALUE)
+);
+```
+!["Partition the table using range partition"](alter-table-range-partition.png?raw=true)
