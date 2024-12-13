@@ -222,3 +222,10 @@ mysql> select count(*) from messages partition (pAfterDec08);
 +----------+
 1 row in set (0.00 sec)
 ```
+
+# Trying different queries
+
+### A query which requires just accessing record on one single partition
+
+!["Query result from just one partition"](just-one-partition.png?raw=true)
+
