@@ -1,4 +1,5 @@
 # MySQL Table Partitioning
+Note : This demo is performed with MySQL version 8.0, but it should work with older or newer versions as well.
 
 # Step 1 : Database Setup
 
