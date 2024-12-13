@@ -130,3 +130,5 @@ ALTER TABLE messages PARTITION BY RANGE (TO_DAYS(created_at)) (
 );
 ```
 !["Partition the table using range partition"](alter-table-range-partition.png?raw=true)
+
+
