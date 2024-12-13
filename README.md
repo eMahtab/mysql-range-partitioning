@@ -215,5 +215,13 @@ where created_at BETWEEN '2024-12-03 00:00:00' AND '2024-12-06 23:59:59' AND sen
 
 !["Querying multiple partitions"](querying-multiple-partitions.png?raw=true)
 
+### A query which requires, querying all partitions
+```sql
+select count(*)
+from messages
+```
+
+!["Queries all partitions"](queries-all-partitions.png?raw=true)
+
 
 
