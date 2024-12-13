@@ -195,7 +195,7 @@ mysql> select count(*) from messages partition (pAfterDec08);
 1 row in set (0.00 sec)
 ```
 
-# Trying different queries
+# Step 4 : Trying different queries
 
 ### A query which requires, querying a single partition e.g. pDec06
 ```sql
