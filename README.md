@@ -132,3 +132,11 @@ ALTER TABLE messages PARTITION BY RANGE (TO_DAYS(created_at)) (
 !["Partition the table using range partition"](alter-table-range-partition.png?raw=true)
 
 **Note : It took 7:10 hours (a long time) to partition the original messages table of table data size around 13.2 GB to partition in 10 different partitions.**
+
+```sql
+SELECT TABLE_SCHEMA, TABLE_NAME, PARTITION_NAME, 
+    (DATA_LENGTH + INDEX_LENGTH) / (1024 * 1024) AS PARTITION_SIZE_MB
+FROM information_schema.partitions
+WHERE TABLE_NAME = 'messages';
+```
+!["All 10 partitions"](all-10-partitions.png?raw=true)
